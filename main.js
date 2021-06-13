@@ -464,7 +464,7 @@ function overlayShow() {
                 overlay.style.display = 'none';
             });
         WAITER = true;
-        setTimeout(() => { WAITER = false }, 200)
+        setTimeout(() => { WAITER = false }, 500)
     }
 }
 
