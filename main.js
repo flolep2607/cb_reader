@@ -447,20 +447,25 @@ function onResize() {
         bottom.style.transform = 'translate3d(0px, ' + new_y + 'px, 0px)';
     }
 }
+var WAITER = false;
 
 function overlayShow() {
-    // Update the page number
-    let number = friendlyPageNumber();
-    $('#overlayPageNumber').innerHTML = number;
-    document.title = number + ' "' + g_file_name + '"';
+    if (!WAITER) {
+        // Update the page number
+        let number = friendlyPageNumber();
+        $('#overlayPageNumber').innerHTML = number;
+        document.title = number + ' "' + g_file_name + '"';
 
-    // Restart the animation
-    let overlay = $('#overlayPageNumber');
-    overlay.style.display = '';
-    animateCSS(overlay, "opacity: 0.5", "opacity: 0.0", "5600ms",
-        function() {
-            overlay.style.display = 'none';
-        });
+        // Restart the animation
+        let overlay = $('#overlayPageNumber');
+        overlay.style.display = '';
+        animateCSS(overlay, "opacity: 0.5", "opacity: 0.0", "5600ms",
+            function() {
+                overlay.style.display = 'none';
+            });
+        WAITER = true;
+        setTimeout(() => { WAITER = false }, 200)
+    }
 }
 
 function onStorageFull(filename) {
