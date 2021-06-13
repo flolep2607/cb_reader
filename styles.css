@@ -208,7 +208,6 @@ input:checked+.touchLabel::after {
 }
 
 #wallPaper {
-    background-color: silver;
     position: absolute;
     top: 0px;
     bottom: 0px;
