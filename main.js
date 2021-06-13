@@ -463,24 +463,6 @@ function overlayShow() {
         });
 }
 
-function monitorTotalUsersOnline() {
-    console.info("Getting total users online ...");
-    let update_timeout = 1000 * 60 * 5; // 5 minutes
-    let user_id = settings_get_user_id();
-    let url = "//comic-book-reader.com/server/count.php?id=" + user_id;
-
-    httpGet(url, function(data, status) {
-        if (data && status === 200) {
-            show('#lblTotalUsersOnline');
-            $('#totalUsersOnline').textContent = ": " + parseInt(data);
-        } else {
-            console.info(data);
-            console.info(status);
-        }
-    });
-    setTimeout(monitorTotalUsersOnline, update_timeout);
-}
-
 function onStorageFull(filename) {
     if (g_is_terminated) {
         return;
@@ -838,7 +820,6 @@ function main() {
 
     startWorker();
     $('#versionDate').textContent = getVersionDate();
-    monitorTotalUsersOnline();
 }
 
 documentOnReady(function() {
