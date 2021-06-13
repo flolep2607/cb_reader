@@ -329,7 +329,7 @@ function loadImage(page, index, cb) {
 
     let img = document.createElement('img');
     img.id = 'page_' + index;
-    img.className = 'comicPage unselectable';
+    img.className = 'comicPage unselectable goodwidth';
     img.alt = '';
     img.ondragstart = function() { return false; };
     img.draggable = false;
